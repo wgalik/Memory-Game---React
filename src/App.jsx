@@ -16,7 +16,9 @@ const App = () => {
 
   return (
     <ScoreProvider>
-      <div>webpack nie jest idenalnum narzędziem</div>
+      <div>
+        webpack nie jest idenalnum narzędziem więc się go uczę na błędach!
+      </div>
       <KomponentTest />
     </ScoreProvider>
 
