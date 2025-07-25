@@ -19,6 +19,7 @@ const App = () => {
       <div>
         webpack nie jest idenalnum narzędziem więc się go uczę na błędach!
       </div>
+      <p>a przy okazji uczę się react router</p>
       <KomponentTest />
     </ScoreProvider>
 

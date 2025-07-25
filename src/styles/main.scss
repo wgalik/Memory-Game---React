@@ -1,6 +1,14 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #5695d3;
+  font-family: "Segoe UI", sans-serif;
+  background: #788b9d;
   margin: 0;
   padding: 0;
 }

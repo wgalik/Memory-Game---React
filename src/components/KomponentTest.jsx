@@ -8,8 +8,8 @@ const KomponentTest = () => {
 
   return (
     <>
-      <h1>Liczba punktów:</h1>
-      <p>{score}</p>
+      <h1>Liczba punktów: {score}</h1>
+      <p>children</p>
     </>
   );
 };
