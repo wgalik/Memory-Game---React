@@ -3,19 +3,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/main.jsx",
-    output: {
-      path: path.resolve(__dirname, "dist"),
-      filename: "bundle.[contenthash].js",
-      publicPath: "/react-memory-game/"
-    },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.[contenthash].js",
+    publicPath: "/", // zostanie nadpisany w produkcji
+    clean: true,
+  },
   resolve: {
     extensions: [".js", ".jsx"],
-  },
-  devServer: {
-    historyApiFallback: true,
-    static: "./dist",
-    port: 3000,
-    open: true,
   },
   module: {
     rules: [
@@ -25,7 +20,7 @@ module.exports = {
         use: "babel-loader",
       },
       {
-        test: /\.(scss|sass)$/,
+        test: /\.(scss|sass)$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
