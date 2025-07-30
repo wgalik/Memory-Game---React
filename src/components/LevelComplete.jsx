@@ -9,12 +9,12 @@ const LevelComplete = () => {
   const { score } = useContext(ScoreContext);
 
   const handleClick = () => {
-        navigate("/");
+    navigate("/");
   };
 
   return (
     <div>
-      <h6 animate__fadeIn>game complited</h6>
+      <h6>game complited</h6>
       <p>Twoje punkty: {score}</p>
       <button onClick={handleClick}>Back to the beginning</button>
     </div>

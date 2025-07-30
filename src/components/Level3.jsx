@@ -7,7 +7,7 @@ import { generateCards, generateGame } from "../logic/functions";
 
 import "../styles/gameBoard.scss";
 
-const Level2 = ({ timerMinutes, pairsCount }) => {
+const Level3 = ({ timerMinutes, pairsCount }) => {
   const navigate = useNavigate();
   const { addPoints } = useContext(ScoreContext);
   const { cardsColor } = useContext(CardContext);
@@ -24,13 +24,15 @@ const Level2 = ({ timerMinutes, pairsCount }) => {
   ));
 
   generateGame(cards, timerMinutes);
+
   const handleClick = () => {
     addPoints(10);
-    navigate("/level3");
+    navigate("/complete");
   };
   return (
     <>
-      <h2>Lvl_2</h2>
+      <h2>Lvl_3</h2>
+
       <p id="timer">00:00</p>
       <section className="grid-container animate__animated animate__fadeIn animate__delay-1s">
         {gameCards}
@@ -39,10 +41,10 @@ const Level2 = ({ timerMinutes, pairsCount }) => {
         className="lvl animate__animated animate__fadeIn animate__delay-1s"
         onClick={handleClick}
       >
-        Next lvl
+        Next page
       </button>
     </>
   );
 };
 
-export default Level2;
+export default Level3;

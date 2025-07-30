@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+#timer {
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: orangered;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-align: center;
+  opacity: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin: 10px auto;
+  width: 90vw;
+  max-width: 1200px;
+  padding: 10px;
+
+  .card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border: 4px solid lightgoldenrodyellow;
+    box-sizing: border-box;
+    border-radius: 10%;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      scale: 1.01;
+    }
+
+    &.red {
+      background-color: red;
+    }
+    &.blue {
+      background-color: blue;
+    }
+    &.yellow {
+      background-color: yellow;
+    }
+    &.green {
+      background-color: green;
+    }
+    &.orange {
+      background-color: orange;
+    }
+    &.purple {
+      background-color: purple;
+    }
+    &.brown {
+      background-color: brown;
+    }
+    &.gray {
+      background-color: gray;
+    }
+    &.lightgreen {
+      background-color: lightgreen;
+    }
+    &.cadetblue {
+      background-color: cadetblue;
+    }
+    &.violet {
+      background-color: violet;
+    }
+    &.cyan {
+      background-color: cyan;
+    }
+    &.hidden {
+      background: linear-gradient(95deg, #daa520 22%, #ffd900 86%);
+    }
+    &.off {
+      cursor: auto;
+      opacity: 0;
+      border: none;
+      &:hover {
+        scale: 1;
+      }
+    }
+  }
+}
+
+button.lvl {
+  display: none;
+}
