@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 let intervalId = null;
-
+export let gameResult = 0;
 export const generateCards = (colors, pairsCount) => {
   const selected = colors.slice(0, pairsCount);
   const duplicated = [...selected, ...selected];
@@ -18,13 +18,12 @@ const shuffle = (array) => {
 };
 
 ///////////////////////////////////////////////////
-export const generateGame = (cards, timerMinutes) => {
+export const generateGame = (cards, timerMinutes, pairsCount) => {
   useEffect(() => {
     const allCards = document.querySelectorAll("div.card");
-    const timer = document.querySelector("#timer");
+    // const timer = document.querySelector("#timer");
     let activeCards = [];
-    let gameResult = 0;
-    const gamePairs = allCards.length / 2;
+    gameResult = 0;
 
     const clickCard = (event) => {
       const clicked = event.target;
@@ -46,7 +45,7 @@ export const generateGame = (cards, timerMinutes) => {
         if (isMatch) {
           activeCards.forEach((card) => card.classList.add("off"));
           gameResult++;
-          if (gameResult === gamePairs) {
+          if (gameResult === pairsCount) {
             allCards.forEach((card) =>
               card.removeEventListener("click", clickCard)
             );
@@ -63,7 +62,7 @@ export const generateGame = (cards, timerMinutes) => {
     };
 
     const timeout = setTimeout(() => {
-      timer.style.opacity = 1;
+      // timer.style.opacity = 1;
       allCards.forEach((card) => {
         card.classList.add("hidden");
         card.addEventListener("click", clickCard);

@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { ScoreContext } from "../context/ScoreContext";
 import { CardContext } from "../context/CardContext";
 
-import { generateCards, generateGame } from "../logic/functions";
+import { generateCards, generateGame, gameResult } from "../logic/functions";
 
-import "../styles/gameBoard.scss";
+import "../styles/GameBoard.scss";
 
-const Level2 = ({ timerMinutes, pairsCount }) => {
+const GameBoard = ({ level, timerMinutes, pairsCount }) => {
   const navigate = useNavigate();
   const { addPoints } = useContext(ScoreContext);
   const { cardsColor } = useContext(CardContext);
@@ -23,15 +23,27 @@ const Level2 = ({ timerMinutes, pairsCount }) => {
     <div key={card.id} className={`card ${card.color}`}></div>
   ));
 
-  generateGame(cards, timerMinutes);
+  generateGame(cards, timerMinutes, pairsCount);
+
   const handleClick = () => {
-    addPoints(10);
-    navigate("/level3");
+    addPoints(gameResult);
+    switch (level) {
+      case 1:
+        navigate("/level2");
+        break;
+      case 2:
+        navigate("/level3");
+        break;
+      case 3:
+        navigate("/complete");
+        break;
+    }
   };
+
   return (
     <>
-      <h2>Lvl_2</h2>
-      <p id="timer">00:00</p>
+      <h2>Lvl_{level}</h2>
+      <p id="timer">{timerMinutes} minute</p>
       <section className="grid-container animate__animated animate__fadeIn animate__delay-1s">
         {gameCards}
       </section>
@@ -45,4 +57,4 @@ const Level2 = ({ timerMinutes, pairsCount }) => {
   );
 };
 
-export default Level2;
+export default GameBoard;
