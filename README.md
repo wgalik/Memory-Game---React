@@ -1,7 +1,3 @@
-# React + webpack
-
-memory game with react router and context store
-
 # 🧠 Memory Game – React
 
 A multi-level memory card game built with React and Webpack. Test your memory skills by flipping cards, advancing through difficulty levels, and tracking your score. Clean transitions and state management make for a smooth and interactive experience.
