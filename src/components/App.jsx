@@ -18,5 +18,3 @@ const App = () => {
 };
 
 export default App;
-
-// basename="/Memory-Game---React/"
