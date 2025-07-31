@@ -8,6 +8,7 @@ import { generateCards, generateGame, gameResult } from "../logic/functions";
 import "../styles/GameBoard.scss";
 
 const GameBoard = ({ level, timerMinutes, pairsCount }) => {
+  const [reload, setReload] = useState(false);
   const navigate = useNavigate();
   const { addPoints } = useContext(ScoreContext);
   const { cardsColor } = useContext(CardContext);
@@ -25,7 +26,7 @@ const GameBoard = ({ level, timerMinutes, pairsCount }) => {
 
   generateGame(cards, timerMinutes, pairsCount);
 
-  const handleClick = () => {
+  const handleNextClick = () => {
     addPoints(gameResult);
     switch (level) {
       case 1:
@@ -37,23 +38,37 @@ const GameBoard = ({ level, timerMinutes, pairsCount }) => {
       case 3:
         navigate("/complete");
         break;
+      default:
+        navigate("*");
     }
   };
-
+  const handleResetClick = () => {
+    navigate(`/level${level}`);
+  };
   return (
-    <>
-      <h2>Lvl_{level}</h2>
-      <p id="timer">{timerMinutes} minute</p>
-      <section className="grid-container animate__animated animate__fadeIn animate__delay-1s">
+    <section className={`game-board level_${level}`}>
+      <h2>Level {level}</h2>
+      <p id="timer">Get ready</p>
+      <section
+        className={`grid-container animate__animated animate__fadeIn animate__delay-1s level_${level}`}
+      >
         {gameCards}
       </section>
-      <button
-        className="lvl animate__animated animate__fadeIn animate__delay-1s"
-        onClick={handleClick}
-      >
-        Next lvl
-      </button>
-    </>
+
+      <div className="next-level animate__animated animate__fadeIn animate__delay-2s">
+        <h3></h3>
+        <button className={`btn-lvl_${level}`} onClick={handleNextClick}>
+          {level === 3 ? (
+            <span>Game Over – View Summary</span>
+          ) : (
+            <span>Next level</span>
+          )}
+        </button>
+        <button onClick={handleResetClick}>
+          <span>Try again</span>
+        </button>
+      </div>
+    </section>
   );
 };
 

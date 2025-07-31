@@ -1,0 +1,27 @@
+@use "main";
+
+.welcome-page {
+  width: 100vw;
+  height: 100vh;
+  @include main.flex;
+  padding: 10px;
+  background-image: url("../images/halloween-7522147_1920.jpg");
+  @include main.background-image;
+
+  h1 {
+    @include main.henny-penny-regular;
+    font-size: 5rem;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 150px 10px 50px;
+    color: main.$primary-color;
+    text-shadow: rgba(0, 0, 0, 0.815) -1px 5px 3px;
+  }
+
+  button {
+    @include main.button;
+    span {
+      @include main.span;
+    }
+  }
+}

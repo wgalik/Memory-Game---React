@@ -8,7 +8,7 @@ const PageNotFound = () => {
     navigate("/");
   };
   return (
-    <div >
+    <div>
       <h2>PageNotFound</h2>
 
       <button onClick={handleClick}>Home Page</button>

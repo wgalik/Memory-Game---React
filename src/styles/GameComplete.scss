@@ -1,0 +1,48 @@
+@use "main";
+
+.end-page {
+  width: 100vw;
+  height: 100vh;
+  @include main.flex;
+  padding: 10px;
+  background-image: url("../images/haunted-house-7508035_1920.jpg");
+  @include main.background-image;
+
+  h6 {
+    @include main.henny-penny-regular;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 100px 10px 50px;
+    color: main.$primary-color;
+    text-shadow: rgba(0, 0, 0, 0.815) -1px 2px 2px;
+
+    @media (min-width: 768px) {
+      font-size: 3rem;
+      text-shadow: rgba(0, 0, 0, 0.815) -1px 3px 2px;
+    }
+  }
+  p {
+    @include main.henny-penny-regular;
+    font-size: 3rem;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 0 10px 50px;
+    color: main.$primary-color;
+    text-shadow: rgba(0, 0, 0, 0.815) -1px 3px 2px;
+    @media (min-width: 768px) {
+      font-size: 4rem;
+    }
+  }
+
+  button {
+    @include main.button;
+    span {
+      @include main.span;
+      font-size: 2rem;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

@@ -1,14 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Henny+Penny&family=Jolly+Lodger&display=swap");
+
+$primary-color: #ae00ff;
+
+@mixin flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+@mixin background-image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin jolly-lodger-regular {
+  font-family: "Jolly Lodger", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin henny-penny-regular {
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin button {
+  padding: 5px 15px;
+  margin-bottom: 5px;
+  background-color: #e1c5f1;
+  border: 2px solid $primary-color;
+  border-radius: 25px;
+  position: relative;
+  z-index: 0;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+@mixin span {
+  @include jolly-lodger-regular;
+  z-index: 1;
+  display: inline-block;
+  position: relative;
+  color: darkred;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  transition: inherit;
+
+  &:hover {
+    transform: scale(2);
+    color: red;
+    text-shadow: rgba(0, 0, 0, 0.89) -1px 3px 4px;
+  }
+}
+
 *,
 ::after,
 ::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: #788b9d;
-  margin: 0;
-  padding: 0;
 }

@@ -17,13 +17,34 @@ const shuffle = (array) => {
   return newArray;
 };
 
-///////////////////////////////////////////////////
 export const generateGame = (cards, timerMinutes, pairsCount) => {
   useEffect(() => {
     const allCards = document.querySelectorAll("div.card");
-    // const timer = document.querySelector("#timer");
     let activeCards = [];
     gameResult = 0;
+
+    const startTimer = (minutes) => {
+      let time = minutes * 60;
+      const timerElement = document.getElementById("timer");
+
+      intervalId = setInterval(() => {
+        const min = Math.floor(time / 60);
+        const sec = time % 60;
+        timerElement.textContent = `${min.toString().padStart(2, "0")}:${sec
+          .toString()
+          .padStart(2, "0")}`;
+
+        if (time <= 0) {
+          clearInterval(intervalId);
+          allCards.forEach((card) => {
+            card.removeEventListener("click", clickCard);
+            card.style.cursor = "auto";
+          });
+          lost();
+        }
+        time--;
+      }, 1000);
+    };
 
     const clickCard = (event) => {
       const clicked = event.target;
@@ -50,7 +71,7 @@ export const generateGame = (cards, timerMinutes, pairsCount) => {
               card.removeEventListener("click", clickCard)
             );
             clearInterval(intervalId);
-            showNextButton();
+            win();
           }
         } else {
           activeCards.forEach((card) => card.classList.add("hidden"));
@@ -62,7 +83,6 @@ export const generateGame = (cards, timerMinutes, pairsCount) => {
     };
 
     const timeout = setTimeout(() => {
-      // timer.style.opacity = 1;
       allCards.forEach((card) => {
         card.classList.add("hidden");
         card.addEventListener("click", clickCard);
@@ -74,31 +94,26 @@ export const generateGame = (cards, timerMinutes, pairsCount) => {
       clearTimeout(timeout);
     };
   }, [cards]);
+};
 
-  const startTimer = (minutes) => {
-    let time = minutes * 60;
-    const timerElement = document.getElementById("timer");
+const win = () => {
+  const text = document.querySelector(".next-level h3");
+  text.innerHTML =
+    "Well done! You completed this level and got 10 extra points. Keep going or restart?";
+  gameResult += 10;
+  showNextButton();
+};
 
-    intervalId = setInterval(() => {
-      const min = Math.floor(time / 60);
-      const sec = time % 60;
-      timerElement.textContent = `${min.toString().padStart(2, "0")}:${sec
-        .toString()
-        .padStart(2, "0")}`;
-
-      if (time <= 0) {
-        clearInterval(intervalId);
-        showNextButton();
-      }
-      time--;
-    }, 1000);
-  };
+const lost = () => {
+  const text = document.querySelector(".next-level h3");
+  text.innerHTML = "Oops! You lost. Try again or move on?";
+  showNextButton();
 };
 
 const showNextButton = () => {
   const gridContainer = document.querySelector(".grid-container");
-  const button = document.querySelector("button");
+  const nextLevel = document.querySelector(".next-level");
   gridContainer.classList.remove("animate__fadeIn");
   gridContainer.classList.add("animate__fadeOut");
-  button.style.display = "block";
+  nextLevel.style.display = "flex";
 };
