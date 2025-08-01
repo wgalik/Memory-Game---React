@@ -11,8 +11,8 @@ const PageNotFound = () => {
   };
   return (
     <section className="end-page">
-      <h6>You’ve reached a dead end</h6>
-
+      <h6>404 – Page Not Found</h6>
+      <p>You’ve reached a dead end</p>
       <button onClick={handleClick}>
         <span>Back to the beginning</span>
       </button>
